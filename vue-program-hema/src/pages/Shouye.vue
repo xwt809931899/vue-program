@@ -6,7 +6,7 @@
         <img src="/static/images/location.png" alt="" />
       </div>
       <div class="input">
-        <!-- <img src='/static/images/slice.png' alt="" /> -->
+        <img src='/static/images/slice.png' alt="" />
         <input type="text" placeholder="大米" v-model="content"/>
       </div>
       <div class="scan">
@@ -68,11 +68,25 @@
         </div>
       </div>
     </div>
+    <div class="middle-bar">
+      <Middle :isSelected='item.isSelected' :id="item.id" @bg='bg' v-for="(item,index) in items" :key="index">
+        <div class="top" slot="top">{{item.title}}</div>
+        <div class="bottom" slot="bottom">{{item.desc}}</div>
+      </Middle>
+    </div>
+    <OneRowTwoProduct :items="items"></OneRowTwoProduct>
+    <div class="footer">
+      <div class="icon">
+        <img src="/static/images/icon.png" alt="">
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 import DynamicImage from '@/components/DynamicImage'
+import OneRowTwoProduct from '@/components/OneRowTwoProduct'
+import Middle from '@/components/Middle'
 export default {
   data () {
     return {
@@ -161,13 +175,58 @@ export default {
           time:false
         },
 
-      ]
+      ],
+      items:[
+        {
+          title:'精选',
+          desc:'猜你喜欢',
+          id:1,
+          isSelected:true
+        },
+        {
+          title:'上新',
+          desc:'本周新品',
+          id:2,
+          isSelected:false,
+        },
+        {
+          title:'居家',
+          desc:'品质生活',
+          id:3,
+          isSelected:false,
+        },
+        {
+          title:'俪人',
+          desc:'爱美至上',
+          id:4,
+          isSelected:false,
+        },
+        {
+          title:'人气',
+          desc:'大家在买',
+          id:5,
+          isSelected:false,
+        }
+      ],
+      content:''
     }
   },
   components:{
-    DynamicImage
+    DynamicImage,
+    OneRowTwoProduct,
+    Middle
   },
   methods:{
+    bg (id) {
+      let a = this.items.find(item => item.id === id )
+      let b = this.items.filter(item => item.id !== id )
+      a.isSelected = true
+      if(a.isSelected) {
+        for(let i = 0; i < b.length; i++) {
+          b[i].isSelected = false
+        }
+      }
+    }
   }
 }
 </script>
@@ -176,6 +235,7 @@ export default {
 <style lang='stylus' scoped>
 .container
   width 750px
+  height 1500px
   .header
     width 750px
     height 200px
@@ -208,17 +268,15 @@ export default {
         display inline-block
         background rgba(255,255,255,1)
         border-radius 34px
-        padding-left 80px
+        padding-left 70px
         box-sizing border-box
-        // display flex
-        // align-items center
-        // position relative
-        // img
-        //   width 40px
-        //   height 40px
-        //   position absolute
-        //   left 4%
-        //   top 24%
+        position relative
+        img
+          width 30px
+          height 30px
+          position absolute
+          left 4%
+          top 20%
         input
           width 100%
           height 100%
@@ -228,6 +286,15 @@ export default {
           // margin-left 52px
           border-radius 34px
           border 0
+          outline none
+        input::-webkit-input-placeholder
+          color: #ccc
+        input:-moz-placeholder
+          color: #ccc
+        input::-moz-placeholder
+          color: #ccc
+        input:-ms-input-placeholder
+          color: #ccc
       .scan
         width 40px
         height 40px
@@ -381,4 +448,48 @@ export default {
             img
               height 125px
               width 100%
+  .middle-bar
+    padding 0 0 0 25px
+    box-sizing border-box
+    width 100%
+    background #f5f5f5
+    .one-middle-bar
+      width 120px
+      height 120px
+      margin-right 25px
+      display inline-block
+      text-align center
+      padding-top 18px
+      box-sizing border-box
+      .top
+        font-size 25px
+        margin-bottom 20px
+      .bottom
+        color #a9a9a9
+        font-size 20px
+    .bgcolor
+      .top
+        font-size 25px
+        margin-bottom 20px
+        color #08dbfd
+      .bottom
+        color #ffffff
+        font-size 20px
+        border-radius 20px
+        background #08dbfd
+  .footer
+    width 100%
+    height 150px
+    background #f5f5f5
+    display flex
+    align-items center
+    justify-content center
+    margin-bottom 85px
+    .icon
+      width 120px
+      height 100px
+      img 
+        width 120px
+        height 100px
+    
 </style>

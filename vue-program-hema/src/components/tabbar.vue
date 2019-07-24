@@ -69,7 +69,7 @@ export default {
   position fixed
   bottom 0
   z-index 99
-  background #ffffff
+  background #ffffff  
   .one-tabbar
     flex 1
     text-align center
