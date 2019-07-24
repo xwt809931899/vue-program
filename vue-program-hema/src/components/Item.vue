@@ -13,15 +13,15 @@
 <script>
 export default {
   props:{
-  name:{
-  type:String
-  },
-  path:{
-  type:String
-  },
-  sel:{
-  type:String
-  }
+    name:{
+      type:String
+    },
+    path:{
+      type:String
+    },
+    sel:{
+      type:String
+    }
  },
   methods:{
     changePage () {

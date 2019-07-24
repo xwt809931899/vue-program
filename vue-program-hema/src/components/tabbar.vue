@@ -1,6 +1,10 @@
 <template>
   <div class="tabbar">
-    <Item :name='item.name' :path='item.path' v-for="(item,index) in items" :key="index" @change="getVal" :sel="selected">
+    <Item :name='item.name'
+     :path='item.path' 
+     v-for="(item,index) in items" 
+     :key="index" @change="getVal" 
+     :sel="selected">
         <img :src="item.img" alt="" slot="img">
         <img :src="item.imgBlue" alt="" slot="blueImg">
     </Item>
@@ -62,9 +66,10 @@ export default {
 <style lang='stylus' scoped>
 .tabbar
   width 100%
-  padding 10px 0
+  padding 10px 0 10px 0
   box-sizing border-box
   display flex
+  background #fff
   border-top 1px solid #f5f5f5
   position fixed
   bottom 0
@@ -72,6 +77,7 @@ export default {
     flex 1
     text-align center
     position relative
+    // background-color #fff
     .image
       width 40px
       height 40px
@@ -87,8 +93,4 @@ export default {
       padding-top 50px
       font-size 10px
         
-
-        
-
-
 </style>

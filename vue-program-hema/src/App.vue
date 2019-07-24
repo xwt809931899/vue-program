@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-   
   <router-view/>
   <Tabbar></Tabbar>
   </div>
@@ -13,7 +12,6 @@ export default {
   components:{
     Tabbar
   }
-  
 }
 </script>
 
