@@ -43,7 +43,9 @@ module.exports = {
       },
       {
         test:/\.css$/,
-        loader:'style-loader!css-loader!stylus-loader'
+        loader:'style-loader!css-loader!stylus-loader',
+        include:['node build/dev-server.js']
+
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,

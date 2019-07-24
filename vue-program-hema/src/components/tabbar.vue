@@ -73,6 +73,8 @@ export default {
   border-top 1px solid #f5f5f5
   position fixed
   bottom 0
+  z-index 99
+  background #ffffff  
   .one-tabbar
     flex 1
     text-align center
