@@ -9,6 +9,8 @@
       </div>
     </lifeTop>
     <div class="top"></div>
+    
+    <div class="img"><img src="/static/images/ad.png" alt=""></div>
     <div class="content" v-for="(item,index) in items" :key="index">
       <img :src="item.src" alt=""/>
       <div class="text">{{item.title}}</div>
@@ -103,6 +105,9 @@ export default {
 
 <style lang="stylus" scoped>
 .sort
+  .img
+   img 
+    width 100%
   .top  
     height 120px
   .sortTop
